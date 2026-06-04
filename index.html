@@ -426,12 +426,54 @@ Seu desafio é não ficar preso aos excessos da análise, da autocrítica ou das
 };
 
 document.getElementById("telaQuiz").innerHTML = `
-<h1>Resultado da Jornada</h1>
-<p style="font-size:22px;color:#444;max-width:420px;">
-${textos[resultado]}
-</p>
+<div style="max-width:500px; text-align:center; color:#444;">
+
+  <h1>Sua Jornada Revelou...</h1>
+
+  ${textos[resultado]}
+
+  <div style="
+      margin-top:30px;
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+      align-items:center;
+  ">
+
+    <button onclick="location.reload()"
+      style="
+      padding:14px 28px;
+      border:none;
+      border-radius:999px;
+      background:#fff;
+      border:2px solid #ffd1dc;
+      color:#444;
+      cursor:pointer;
+      font-size:15px;
+      box-shadow:0 8px 20px rgba(255,192,203,.25);
+    ">
+      🔄 Refazer o Teste
+    </button>
+
+    <a
+      href="https://www.instagram.com/priscilareis.analista/"
+      target="_blank"
+      style="
+      text-decoration:none;
+      padding:14px 28px;
+      border-radius:999px;
+      background:#ffd1dc;
+      color:#444;
+      font-size:15px;
+      box-shadow:0 8px 20px rgba(255,192,203,.25);
+    ">
+      Continuar Minha Jornada
+    </a>
+
+  </div>
+
+</div>
 `;
-}
 
 </script>
 
