@@ -27,13 +27,45 @@
      CAPA (TELA 1)
   ========================= */
   .capa {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    text-align: center;
-  }
+  width: 100vw;
+  height: 100vh;
+
+  background: url("capa.jpg") center center/cover no-repeat;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  position: relative;
+}
+
+ .overlay {
+  width: 100%;
+  padding: 40px 25px 60px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.1),
+    transparent
+  );
+
+  text-align: center;
+  color: white;
+}
+
+.overlay h1 {
+  font-size: 34px;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 15px;
+}
+
+.overlay .frase {
+  font-size: 16px;
+  max-width: 420px;
+  margin: 0 auto 25px;
+  opacity: 0.9;
+}
 
  .circle-image {
   width: 420px;
@@ -45,16 +77,18 @@
 }
 
   .btn {
-    padding: 14px 26px;
-    border-radius: 999px;
-    border: 1px solid #ffd1dc;
-    background: #fff;
-    color: #444;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255, 192, 203, 0.25);
-    transition: transform 0.2s ease;
-  }
+  padding: 16px 34px;
+  border-radius: 999px;
+  border: none;
+  background: #fff;
+  color: #444;
+  font-size: 15px;
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+  transition: transform .2s ease;
+}
 
   .btn:hover {
     transform: scale(1.05);
@@ -111,8 +145,8 @@
 }
 
  .imagem-pergunta{
-  width:260px;
-  height:260px;
+  width:240px;
+  height:240px;
 
   object-fit:cover;
 
@@ -164,12 +198,22 @@
      TELA 1 - CAPA
 ========================= -->
 <div id="telaCapa" class="capa">
-  <img src="Capa.jpg" class="circle-image" alt="Capa" />
-  <button class="btn" onclick="iniciarJornada()">
-    Sua Jornada começa aqui
-  </button>
-</div>
 
+  <div class="overlay">
+
+    <h1>Jornada dos Temperamentos</h1>
+
+    <p class="frase">
+      Toda reação conta uma história que começou muito antes deste momento.
+    </p>
+
+    <button class="btn" onclick="iniciarJornada()">
+      Iniciar Minha Jornada
+    </button>
+
+  </div>
+
+</div>
 <!-- =========================
      TELA 2 - QUIZ
 ========================= -->
@@ -179,17 +223,10 @@
   Estação 1 de 7
 </div>
 
-<img id="imagemPergunta" class="imagem-pergunta">
+<img id="imagemPergunta" class="imagem-pergunta" alt="Imagem da pergunta">
 
 <p id="textoPergunta"
    style="max-width:500px;margin-bottom:25px;color:#666;font-size:22px;">
-</p>
-
-<div class="grid">
-
- 
-<p id="textoPergunta"
-   style="max-width:400px;margin-bottom:25px;color:#666;font-size:14px;">
 </p>
 
 <div class="grid">
@@ -197,8 +234,6 @@
   <div class="circle-btn" id="opcao1"></div>
   <div class="circle-btn" id="opcao2"></div>
   <div class="circle-btn" id="opcao3"></div>
-</div>
-
 </div>
 
   <script>
