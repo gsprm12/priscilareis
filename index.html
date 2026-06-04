@@ -367,21 +367,33 @@ botao.innerText = pergunta.opcoes[i].texto;
 botao.onclick = () => responder(pergunta.opcoes[i].tipo);
 }
 }
+    
 function responder(tipo){
 
-pontos[tipo]++;
+  pontos[tipo]++;
 
-if(perguntaAtual === 0){
-respostaEstacao1 = tipo;
-}
+  if(perguntaAtual === 0){
+    respostaEstacao1 = tipo;
+  }
 
-perguntaAtual++;
+  perguntaAtual++;
 
-if(perguntaAtual < perguntas.length){
-mostrarPergunta();
-}else{
-mostrarResultado();
-}
+  if(perguntaAtual < perguntas.length){
+    mostrarPergunta();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  } else {
+    mostrarResultado();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
 }
 
 function mostrarResultado(){
