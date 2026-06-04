@@ -64,8 +64,8 @@
      QUIZ (TELA 2)
   ========================= */
 .container {
-  width: 600px;
-  height: 600px;
+  width: 750px;
+  height: 750px;
   padding: 60px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.75);
@@ -160,22 +160,192 @@
 ========================= -->
 <div id="telaQuiz" class="container hidden">
 
-  <h1>A origem da sua reação ao mundo</h1>
+  <div id="progresso" style="margin-bottom:15px;color:#888;font-size:14px;">
+  Estação 1 de 7
+</div>
 
-  <div class="grid">
-    <div class="circle-btn">Responder imediatamente e me posicionar</div>
-    <div class="circle-btn">Reagir com intensidade e depois aliviar</div>
-    <div class="circle-btn">Ficar em silêncio observando</div>
-    <div class="circle-btn">Sentir por dentro sem demonstrar</div>
-  </div>
+<h1 id="tituloPergunta"></h1>
+
+<p id="textoPergunta"
+   style="max-width:400px;margin-bottom:25px;color:#666;font-size:14px;">
+</p>
+
+<div class="grid">
+  <div class="circle-btn" id="opcao0"></div>
+  <div class="circle-btn" id="opcao1"></div>
+  <div class="circle-btn" id="opcao2"></div>
+  <div class="circle-btn" id="opcao3"></div>
+</div>
 
 </div>
 
 <script>
-  function iniciarJornada() {
-    document.getElementById("telaCapa").style.display = "none";
-    document.getElementById("telaQuiz").classList.remove("hidden");
-  }
+  <script>
+
+const perguntas = [
+{
+titulo:"📍 Estação 1 — A Origem",
+texto:"Você não teve tempo de pensar. Alguém entra, fala algo, muda o clima do ambiente. O que nasce em você primeiro?",
+opcoes:[
+{texto:"🔥 Eu me posiciono rapidamente e sinto necessidade de agir ou responder.",tipo:"colerico"},
+{texto:"☀️ Reajo de forma espontânea, expressando o que sinto no momento.",tipo:"sanguineo"},
+{texto:"🌿 Observo primeiro e procuro entender antes de agir.",tipo:"fleumatico"},
+{texto:"🌙 Percebo tudo internamente e começo a processar o que aconteceu.",tipo:"melancolico"}
+]
+},
+
+{
+titulo:"📍 Estação 2 — As Marcas Que Permanecem",
+texto:"Algo te marcou. Isso costuma ficar em você como:",
+opcoes:[
+{texto:"🔥 Fortalece minhas convicções.",tipo:"colerico"},
+{texto:"☀️ Sinto forte e depois passa.",tipo:"sanguineo"},
+{texto:"🌿 Aceito com tranquilidade.",tipo:"fleumatico"},
+{texto:"🌙 Guardo profundamente.",tipo:"melancolico"}
+]
+},
+
+{
+titulo:"📍 Estação 3 — O Espelho Interior",
+texto:"Se você pudesse se observar de fora...",
+opcoes:[
+{texto:"🔥 Intenso e determinado.",tipo:"colerico"},
+{texto:"☀️ Alegre e espontâneo.",tipo:"sanguineo"},
+{texto:"🌿 Calmo e equilibrado.",tipo:"fleumatico"},
+{texto:"🌙 Reflexivo e sensível.",tipo:"melancolico"}
+]
+},
+
+{
+titulo:"📍 Estação 4 — Sua Presença no Mundo",
+texto:"Quando entra em um ambiente novo...",
+opcoes:[
+{texto:"🔥 Assume espaço naturalmente.",tipo:"colerico"},
+{texto:"☀️ Conecta-se facilmente.",tipo:"sanguineo"},
+{texto:"🌿 Observa primeiro.",tipo:"fleumatico"},
+{texto:"🌙 Analisa o contexto.",tipo:"melancolico"}
+]
+},
+
+{
+titulo:"📍 Estação 5 — Quando o Mundo Contraria Você",
+texto:"Quando alguém te desafia...",
+opcoes:[
+{texto:"🔥 Defendo meu ponto de vista.",tipo:"colerico"},
+{texto:"☀️ Reajo e depois sigo.",tipo:"sanguineo"},
+{texto:"🌿 Penso antes de responder.",tipo:"fleumatico"},
+{texto:"🌙 Analiso profundamente.",tipo:"melancolico"}
+]
+},
+
+{
+titulo:"📍 Estação 6 — O Funcionamento da Sua Mente",
+texto:"Por dentro sua mente parece mais com:",
+opcoes:[
+{texto:"🔥 Foco em objetivos.",tipo:"colerico"},
+{texto:"☀️ Muitas ideias ao mesmo tempo.",tipo:"sanguineo"},
+{texto:"🌿 Pensamentos tranquilos.",tipo:"fleumatico"},
+{texto:"🌙 Reflexões profundas.",tipo:"melancolico"}
+]
+},
+
+{
+titulo:"📍 Estação 7 — Seus Talentos Naturais",
+texto:"O que nasce fácil em você?",
+opcoes:[
+{texto:"🔥 Liderar e decidir.",tipo:"colerico"},
+{texto:"☀️ Comunicar e inspirar.",tipo:"sanguineo"},
+{texto:"🌿 Acolher e estabilizar.",tipo:"fleumatico"},
+{texto:"🌙 Analisar e compreender.",tipo:"melancolico"}
+]
+}
+];
+
+let perguntaAtual = 0;
+let respostaEstacao1 = null;
+
+const pontos = {
+colerico:0,
+sanguineo:0,
+fleumatico:0,
+melancolico:0
+};
+
+function iniciarJornada(){
+document.getElementById("telaCapa").style.display="none";
+document.getElementById("telaQuiz").classList.remove("hidden");
+mostrarPergunta();
+}
+
+function mostrarPergunta(){
+
+const pergunta = perguntas[perguntaAtual];
+
+document.getElementById("tituloPergunta").innerText = pergunta.titulo;
+
+document.getElementById("textoPergunta").innerText = pergunta.texto;
+
+document.getElementById("progresso").innerText =
+`Estação ${perguntaAtual+1} de ${perguntas.length}`;
+
+for(let i=0;i<4;i++){
+
+const botao = document.getElementById(`opcao${i}`);
+
+botao.innerText = pergunta.opcoes[i].texto;
+
+botao.onclick = () => responder(pergunta.opcoes[i].tipo);
+}
+}
+
+function responder(tipo){
+
+pontos[tipo]++;
+
+if(perguntaAtual === 0){
+respostaEstacao1 = tipo;
+}
+
+perguntaAtual++;
+
+if(perguntaAtual < perguntas.length){
+mostrarPergunta();
+}else{
+mostrarResultado();
+}
+}
+
+function mostrarResultado(){
+
+let maior = Math.max(...Object.values(pontos));
+
+let vencedores = Object.keys(pontos)
+.filter(k => pontos[k] === maior);
+
+let resultado;
+
+if(vencedores.length === 1){
+resultado = vencedores[0];
+}else{
+resultado = respostaEstacao1;
+}
+
+const textos = {
+colerico:"🔥 Seu temperamento predominante é COLÉRICO.",
+sanguineo:"☀️ Seu temperamento predominante é SANGUÍNEO.",
+fleumatico:"🌿 Seu temperamento predominante é FLEUMÁTICO.",
+melancolico:"🌙 Seu temperamento predominante é MELANCÓLICO."
+};
+
+document.getElementById("telaQuiz").innerHTML = `
+<h1>Resultado da Jornada</h1>
+<p style="font-size:22px;color:#444;max-width:420px;">
+${textos[resultado]}
+</p>
+`;
+}
+
+</script>
 </script>
 
 </body>
