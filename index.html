@@ -23,43 +23,38 @@
     font-family: 'Segoe UI', sans-serif;
   }
 
-  /* =========================
-     CAPA (TELA 1)
-  ========================= */
-  .capa {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    text-align: center;
-  }
+/* =========================
+   CAPA FULL SCREEN
+========================= */
+.capa {
+  width: 100%;
+  height: 100vh;
 
- .circle-image {
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ffd1dc;
-  box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3);
+  background: url("Capa.jpg") center/cover no-repeat;
+
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-  .btn {
-    padding: 14px 26px;
-    border-radius: 999px;
-    border: 1px solid #ffd1dc;
-    background: #fff;
-    color: #444;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255, 192, 203, 0.25);
-    transition: transform 0.2s ease;
-  }
+/* camada escura na parte de baixo */
+.overlay {
+  width: 100%;
+  padding: 60px 25px;
 
-  .btn:hover {
-    transform: scale(1.05);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.45),
+    rgba(0,0,0,0)
+  );
+}
+ 
   /* =========================
      QUIZ (TELA 2)
   ========================= */
@@ -148,11 +143,17 @@
 <!-- =========================
      TELA 1 - CAPA
 ========================= -->
+<!-- TELA 1 - CAPA FULL SCREEN -->
 <div id="telaCapa" class="capa">
-  <img src="Capa.jpg" class="circle-image" alt="Capa" />
-  <button class="btn" onclick="iniciarJornada()">
-    Sua Jornada começa aqui
-  </button>
+
+  <div class="overlay">
+
+    <button class="btn" onclick="iniciarJornada()">
+      Sua Jornada Começa Aqui
+    </button>
+
+  </div>
+
 </div>
 
 <!-- =========================
