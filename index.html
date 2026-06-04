@@ -129,6 +129,21 @@
   font-size: 14px;
 }
 
+ .imagem-pergunta{
+  width:260px;
+  height:260px;
+
+  object-fit:cover;
+
+  border-radius:50%;
+
+  margin-bottom:25px;
+
+  border:3px solid #ffd1dc;
+
+  box-shadow:0 10px 25px rgba(255,182,193,.25);
+}
+
   .circle-btn:hover {
     transform: scale(1.05);
   }
@@ -208,7 +223,8 @@
 
 const perguntas = [
 {
-titulo:"Estação 1 — A Origem",
+imagem:"estacao1.jpg",
+titulo:"— A Origem",
 texto:"Você não teve tempo de pensar. Alguém entra, fala algo, muda o clima do ambiente. O que nasce em você primeiro?",
 opcoes:[
 {texto:"Eu me posiciono rapidamente e sinto necessidade de agir ou responder.",tipo:"colerico"},
@@ -219,7 +235,8 @@ opcoes:[
 },
 
 {
-titulo:"Estação 2 — As Marcas Que Permanecem",
+imagem:"estacao2.jpg",
+titulo:"As Marcas Que Permanecem",
 texto:"Algo te marcou. Isso costuma ficar em você como:",
 opcoes:[
 {texto:"Fortalece minhas convicções.",tipo:"colerico"},
@@ -230,7 +247,8 @@ opcoes:[
 },
 
 {
-titulo:"Estação 3 — O Espelho Interior",
+imagem:"estacao3.jpg",
+titulo:"O Espelho Interior",
 texto:"Se você pudesse se observar de fora...",
 opcoes:[
 {texto:"Intenso e determinado.",tipo:"colerico"},
@@ -241,7 +259,8 @@ opcoes:[
 },
 
 {
-titulo:"Estação 4 — Sua Presença no Mundo",
+imagem:"estacao4.jpg",
+titulo:"Sua Presença no Mundo",
 texto:"Quando entra em um ambiente novo...",
 opcoes:[
 {texto:"Assume espaço naturalmente.",tipo:"colerico"},
@@ -252,7 +271,8 @@ opcoes:[
 },
 
 {
-titulo:"Estação 5 — Quando o Mundo Contraria Você",
+imagem:"estaca51.jpg",
+titulo:"Quando o Mundo Contraria Você",
 texto:"Quando alguém te desafia...",
 opcoes:[
 {texto:"Defendo meu ponto de vista.",tipo:"colerico"},
@@ -263,7 +283,8 @@ opcoes:[
 },
 
 {
-titulo:"Estação 6 — O Funcionamento da Sua Mente",
+imagem:"estacao6.jpg",
+titulo:"O Funcionamento da Sua Mente",
 texto:"Por dentro sua mente parece mais com:",
 opcoes:[
 {texto:"Foco em objetivos.",tipo:"colerico"},
@@ -274,7 +295,8 @@ opcoes:[
 },
 
 {
-titulo:"Estação 7 — Seus Talentos Naturais",
+imagem:"estacao7.jpg",
+titulo:"Seus Talentos Naturais",
 texto:"O que nasce fácil em você?",
 opcoes:[
 {texto:"Liderar e decidir.",tipo:"colerico"},
@@ -305,9 +327,11 @@ function mostrarPergunta(){
 
 const pergunta = perguntas[perguntaAtual];
 
-document.getElementById("tituloPergunta").innerText = pergunta.titulo;
+document.getElementById("imagemPergunta").src =
+pergunta.imagem;
 
-document.getElementById("textoPergunta").innerText = pergunta.texto;
+document.getElementById("textoPergunta").innerText =
+pergunta.texto;
 
 document.getElementById("progresso").innerText =
 `Estação ${perguntaAtual+1} de ${perguntas.length}`;
